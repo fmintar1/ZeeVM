@@ -1,0 +1,56 @@
+;; Input code: (print (add 2 (subtract 4 2)))
+;; Begin program code
+                START
+
+DEBUG Start normal test
+
+                PUSH #2
+
+
+                PUSH #4
+
+                PUSH #2
+                SUBTRACT
+                ADD
+                PRINT
+;; test store/load
+DEBUG test load store
+                PUSH #5
+                STORE X
+                PUSH #6
+                STORE Y
+                LOAD X
+                PRINT
+                LOAD Y
+                PUSH #10
+                ADD
+                PRINT
+;; test forward jump
+DEBUG forward jump test
+                JUMP FOO
+                PUSH #0
+                PRINT
+                LABEL FOO
+                PUSH #1
+                PRINT
+;; test backward jump
+DEBUG backward jump test
+                PUSH #99
+                PRINT
+                PUSH #2
+                STORE I
+                LABEL BAR
+                LOAD I
+                DUPE
+                PRINT
+                JMPZ END
+                LOAD I
+                PUSH #1
+                SUBTRACT
+                STORE I
+                JUMP BAR
+                LABEL END
+                LOAD I
+                PRINT
+;; exit program
+                HALT
