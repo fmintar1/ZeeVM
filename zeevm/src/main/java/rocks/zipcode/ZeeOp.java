@@ -46,6 +46,23 @@ public enum ZeeOp {
             operandStack.push(operandStack.pop() - second);
         }
     },
+    MULTIPLY("multiply"){
+        public void execute(String[] args) {
+            operandStack.push(operandStack.pop() * operandStack.pop());
+        }
+    },
+    DIVIDE("divide"){
+        public void execute(String[] args) {
+            int second = operandStack.pop();
+            operandStack.push(operandStack.pop() / second);
+        }
+    },
+    MOD("mod"){
+        public void execute(String[] args) {
+            int second = operandStack.pop();
+            operandStack.push(operandStack.pop() % second);
+        }
+    },
     PRINT("print"){
         public void execute(String[] args) {
                 String p = operandStack.pop().toString();
